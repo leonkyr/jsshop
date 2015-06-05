@@ -1,0 +1,186 @@
+{
+
+    // See http://catatron.com/node-jscs/rules/
+
+    // "disallowCommaBeforeLineBreak": true, //Disallows commas as last token on a line in lists.
+    "disallowDanglingUnderscores": true, //Disallows identifiers that start or end in _, except for some popular exceptions:
+    "disallowEmptyBlocks": true, //Disallows empty blocks (except for catch blocks).
+    "disallowImplicitTypeConversion": ["numeric", "boolean", "binary", "string"], //Disallows implicit type conversion.
+    "disallowKeywords": [], //Disallows usage of specified keywords.
+    "disallowKeywordsOnNewLine": ["else"], //Disallows placing keywords on a new line.
+    // "disallowLeftStickedOperators": [
+    //   "?",
+    //   "+",
+    //   "-",
+    //   "/",
+    //   "*",
+    //   "=",
+    //   "==",
+    //   "===",
+    //   "!=",
+    //   "!==",
+    //   ">",
+    //   ">=",
+    //   "<",
+    //   "<="
+    // ], //Disallows sticking operators to the left.
+    "disallowMixedSpacesAndTabs": true, //Requires lines to not contain both spaces and tabs consecutively, or spaces after tabs only for alignment if "smart"
+    "disallowMultipleLineBreaks": true, //Disallows multiple blank lines in a row.
+    "disallowMultipleLineStrings": true, //Disallows strings that span multiple lines without using concatenation.
+    //"disallowMultipleVarDecl": true, //Disallows multiple var declaration (except for-loop).
+    "disallowQuotedKeysInObjects": true, //Disallows quoted keys in object if possible.
+    // "disallowRightStickedOperators": [
+    //   "?",
+    //   "+",
+    //   "-",
+    //   "/",
+    //   "*",
+    //   "=",
+    //   "==",
+    //   "===",
+    //   "!=",
+    //   "!==",
+    //   ">",
+    //   ">=",
+    //   "<",
+    //   "<="
+    // ], //Disallows sticking operators to the right.
+    "disallowSpaceAfterBinaryOperators": [], //Disallow space after binary operators
+    "disallowSpaceAfterKeywords": [], //Disallows space after keyword.
+    "disallowSpaceAfterObjectKeys": true, //Disallows space after object keys.
+    "disallowSpaceAfterPrefixUnaryOperators": [
+        "++", "--", "+", "-", "~", "!"
+    ], //Requires sticking unary operators to the right.
+    "disallowSpaceBeforeBinaryOperators": [], //Requires sticking binary operators to the left.
+    // "disallowSpaceBeforeBlockStatements": true, //Disallows space before block statements (for loops, control structures).
+    "disallowSpaceBeforePostfixUnaryOperators": [
+        "++", "--"
+    ], //Disallow space before postfix unary operators
+    // "disallowSpacesInAnonymousFunctionExpression": { //Disallow spaces in anonymous function expression
+    //   "beforeOpeningRoundBrace": true, //Disallows space before ()
+    //   "beforeOpeningCurlyBrace": true //Disallows space before {}
+    // },
+    // "disallowSpacesInFunctionDeclaration": { //Disallow spaces in function declaration
+    //   "beforeOpeningRoundBrace": true, //Disallows space before ()
+    //   "beforeOpeningCurlyBrace": true //Disallows space before {}
+    // },
+    // "disallowSpacesInFunctionExpression": { //Disallow spaces in function expression
+    //   "beforeOpeningRoundBrace": true, //Disallows space before ()
+    //   "beforeOpeningCurlyBrace": true //Disallows space before {}
+    // },
+    // "disallowSpacesInNamedFunctionExpression": { //Disallow spaces in named function expression
+    //   "beforeOpeningRoundBrace": true, //Disallows space before ()
+    //   "beforeOpeningCurlyBrace": true //Disallows space before {}
+    // },
+    "disallowSpacesInsideArrayBrackets": true, //Disallows space after opening array square bracket and before closing.
+    "disallowSpacesInsideObjectBrackets": true, //Disallows space after opening object curly brace and before closing.
+    "disallowSpacesInsideParentheses": true, //Disallows space after opening round bracket and before closing.
+    "disallowTrailingComma": true, //Disallows an extra comma following the final element of an array or object literal.
+    "disallowTrailingWhitespace": true, //Requires all lines to end on a non-whitespace character
+    "disallowYodaConditions": true, //Requires the variable to be the left hand operator when doing a boolean comparison
+    "disallowPaddingNewlinesInBlocks": true, //Disallows blocks from beginning and ending with 2 newlines.
+    "maximumLineLength": 100, //Requires all lines to be at most the number of characters specified
+    //"requireAlignedObjectValues": "all", //Requires proper alignment in object literals.
+    "requireBlocksOnNewline": true, //Requires blocks to begin and end with a newline
+    "requireCamelCaseOrUpperCaseIdentifiers": true, //Requires identifiers to be camelCased or UPPERCASE_WITH_UNDERSCORES
+    "requireCapitalizedConstructors": true, //Requires constructors to be capitalized (except for this)
+    "requireCommaBeforeLineBreak": true, //Requires commas as last token on a line in lists.
+    "requireCurlyBraces": [
+        "if",
+        "else",
+        "for",
+        "while",
+        "do",
+        "try",
+        "catch",
+        "case",
+        "default"
+    ], //Requires curly braces after statements.
+    "requireDotNotation": true, //Requires member expressions to use dot notation when possible
+    "requireKeywordsOnNewLine": [], //Requires placing keywords on a new line.
+    // "requireLeftStickedOperators": [], //Requires sticking operators to the left.
+    "requireLineFeedAtFileEnd": true, //Requires placing line feed at file end.
+    // "requireMultipleVarDecl": true, //Requires multiple var declaration.
+    "requireOperatorBeforeLineBreak": [], //Requires operators to appear before line breaks and not after.
+    // "requirePaddingNewlinesInBlocks": true, //Requires blocks to begin and end with 2 newlines
+    "requireParenthesesAroundIIFE": true, //Requires parentheses around immediately invoked function expressions.
+    // "requireRightStickedOperators": [], //Requires sticking operators to the right.
+    "requireSpaceAfterBinaryOperators": [], //Disallows sticking binary operators to the right.
+    "requireSpaceAfterKeywords": [
+        "if",
+        "else",
+        "for",
+        "while",
+        "do",
+        "switch",
+        "return",
+        "try",
+        "catch"
+    ], //Requires space after keyword.
+    // "requireSpaceAfterObjectKeys": true, //Requires space after object keys.
+    "requireSpaceAfterPrefixUnaryOperators": [], //Disallows sticking unary operators to the right.
+    "requireSpaceBeforeBinaryOperators": [
+        "+",
+        "-",
+        "/",
+        "*",
+        "=",
+        "==",
+        "===",
+        "!=",
+        "!=="
+    ], //Disallows sticking binary operators to the left.
+    "requireSpaceBeforeBlockStatements": true, //Requires space before block statements (for loops, control structures).
+    "requireSpaceBeforePostfixUnaryOperators": [], //Disallows sticking unary operators to the left.
+    "requireSpacesInAnonymousFunctionExpression": { //Require spaces in anonymous function expression
+        "beforeOpeningRoundBrace": true, //Requires space before ()
+        "beforeOpeningCurlyBrace": true //Requires space before {}
+    },
+    "requireSpacesInFunctionDeclaration": { //Require spaces in function declaration
+        "beforeOpeningRoundBrace": true, //Requires space before ()
+        "beforeOpeningCurlyBrace": true //Requires space before {}
+    },
+    "requireSpacesInFunctionExpression": { //Require spaces in function expression
+        "beforeOpeningRoundBrace": true, //Requires space before ()
+        "beforeOpeningCurlyBrace": true //Requires space before {}
+    },
+    "requireSpacesInNamedFunctionExpression": { //Require spaces in named function expression
+        "beforeOpeningRoundBrace": true, //Requires space before ()
+        "beforeOpeningCurlyBrace": true //Requires space before {}
+    },
+    // "requireSpacesInsideArrayBrackets": "", //Requires space after opening array square bracket and before closing. TODO
+    // "requireSpacesInsideObjectBrackets": "", //Requires space after opening object curly brace and before closing. TODO
+    // "requireTrailingComma": true, //Requires an extra comma following the final element of an array or object literal.
+    "safeContextKeyword": ["self"], //Option to check var that = this expressions
+    "validateIndentation": 4, //Validates indentation for arrays, objects, switch statements, and block statements
+    "validateJSDoc": { //Enables JSDoc validation.
+        "checkParamNames": true, //ensures param names in jsdoc and in function declaration are equal
+        "checkRedundantParams": true, //reports redundant params in jsdoccontains type
+        "requireParamTypes": true //ensures params in jsdoc
+    },
+    // "validateLineBreaks": "LF", //Option to check line break characters
+    "validateQuoteMarks": "'", //Requires all quote marks to be either the supplied value, or consistent if true
+
+
+    "plugins": [ // plugins
+        "jscs-jsdoc" //jsdoc validator plugin
+    ],
+    "jsDoc": { // jsdoc plugin options
+        "checkAnnotations": "jsdoc3", //Ensures tag names are valid
+        "checkParamNames": true, //Ensures param names in jsdoc and in function declaration are equal
+        "requireParamTypes": true, //Ensures params in jsdoc contains type
+        "checkRedundantParams": true, //Reports redundant params in jsdoc
+        "checkReturnTypes": true, //Reports discrepancies between the claimed in jsdoc and actual type if both exist (code scan)
+        "checkRedundantReturns": true, //Report statements for functions with no return
+        "requireReturnTypes": true, //Ensures returns in jsdoc contains type
+        "checkTypes": "strictNativeCase", //Reports invalid types for bunch of tags. In strictNativeCase mode ensures that case of natives is the same as in this list: boolean, number, string, null, Object, Array, Date, RegExp.
+        "checkRedundantAccess": true, //Reports redundant access declarations
+
+        "enforceExistence": "exceptExports" //Ensures jsdoc block exist
+            // "requireHyphenBeforeDescription": true //Ensures a param description has a hyphen before it (checks for -)
+    },
+    "excludeFiles" : [
+        "app/components/content/**",
+        "app/translations/**"
+    ]
+}
