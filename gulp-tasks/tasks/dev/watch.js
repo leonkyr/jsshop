@@ -33,13 +33,12 @@ var path = {
 };
 
 gulp.task('copy', function(){
-    console.log('Copied');
   gulp.src(path.HTML)
-    .pipe(gulp.dest(path.DEST));
+    .pipe(gulp.dest(path.DEST_BUILD));
 });
 
 gulp.task('watch', 'WATCH', ['copy', 'zbuild', 'zreplaceHTML'], function() {
-  gulp.watch(path.HTML, ['copy']);
+  gulp.watch(path.HTML, ['copy', 'zbuild', 'zreplaceHTML']);
 
   var watcher  = watchify(browserify({
     entries: [path.ENTRY_POINT],
@@ -63,6 +62,7 @@ gulp.task('zbuild', function(){
   browserify({
     entries: [path.ENTRY_POINT],
     transform: [reactify],
+    debug: true
   })
     .bundle()
     .pipe(source(path.MINIFIED_OUT))
@@ -73,7 +73,7 @@ gulp.task('zbuild', function(){
 gulp.task('zreplaceHTML', function(){
   gulp.src(path.HTML)
     .pipe(inject(
-                    gulp.src(['./build/dev/src/build.js'], {
+                    gulp.src(['./build/dev/**/*.js'], {
                         read: false
                     }), {
                         relative: true,
