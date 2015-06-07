@@ -81,7 +81,6 @@
 
     // Custom Globals
     "globals": {
-        "angular": true,
         "moment": true
     } // additional predefined global variables
 }

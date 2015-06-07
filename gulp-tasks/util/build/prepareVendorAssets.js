@@ -15,7 +15,6 @@ function prepareVendorJs () {
     var deferred = Q.defer();
     gulp.src(bowerFiles())
         .pipe(addsrc.append('./bower_components/navgoco/src/jquery.navgoco.js'))
-        .pipe(addsrc.append('./bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.js'))
         .pipe(addsrc.append('./custom_modules/qtip2/jquery.qtip.js'))
         .pipe(gulpFilter(['**/*.js']))
         .pipe(sourcemaps.init())
@@ -41,13 +40,9 @@ function prepareVendorAssets () {
 function prepareVendorCss () {
     var deferred = Q.defer();
     gulp.src(bowerFiles())
-        .pipe(addsrc.append('./bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.css'))
         .pipe(addsrc.append('./custom_modules/qtip2/jquery.qtip.css'))
         .pipe(gulpFilter(['**/*.css']))
         .pipe(sourcemaps.init())
-        //.pipe(cssBase64({
-        //    maxWeightResource: 9999999999
-        //}))
         .pipe(concat('vendor.css'))
         //.pipe(uglify())
         .pipe(sourcemaps.write('./'))

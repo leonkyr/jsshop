@@ -1,21 +1,21 @@
 'use strict';
 
 var gulp = require('gulp-help')(require('gulp')),
+    server = require('gulp-connect'),
+    openPage = require('open'),
     prepareIndexHtml = require('../../util/build/prepareIndexHtml'),
     prepareWatchHelper = require('../../util/prepareWatchHelper'),
-    server = require('gulp-connect'),
+    prepareTransform = require('../../util/build/prepareTransform'),
     prepareDevServer = require('../../util/prepareDevServer'),
     prepareBuildHelper = require('../../util/build/prepareBuildHelper'),
     prepareAppAssets = require('../../util/build/prepareAppAssets'),
     prepareVendorAssets = require('../../util/build/prepareVendorAssets'),
     prepareIndexHtml = require('../../util/build/prepareIndexHtml'),
     prepareConfig = require('../../util/build/prepareConfig'),
-    prepareRevision = require('../../util/build/prepareRevision'),
-    openPage = require('open');
+    prepareRevision = require('../../util/build/prepareRevision');
 
 gulp.task('dev', 'Start a fully functioning dev environment with livereload', ['build:dev'], function (done) {
     prepareDevServer
-        .startMockServer()
         .startAssetServer()
         .then(function () {
             openPage('http://localhost:8000/build/dev/index.html');
@@ -30,10 +30,12 @@ gulp.task('dev', 'Start a fully functioning dev environment with livereload', ['
                 .then(prepareVendorAssets.prepareVendorJs)
                 .then(prepareVendorAssets.prepareVendorCss)
                 .then(prepareVendorAssets.prepareVendorAssets)
+                // transform JSX
+                .then(prepareTransform.transformJsx)
                 // process app assets
                 .then(prepareAppAssets.prepareAppJs)
                 .then(prepareAppAssets.prepareAppCss)
-                .then(prepareAppAssets.prepareTemplateCache)
+                // .then(prepareAppAssets.prepareTemplateCache)
                 .then(prepareAppAssets.prepareAppAssets)
                 // prepare index html
                 .then(prepareIndexHtml.prepareDevIndexHtml)

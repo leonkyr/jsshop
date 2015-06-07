@@ -5,10 +5,15 @@ var gulp = require('gulp-help')(require('gulp')),
     prepareIndexHtml = require('../../util/build/prepareIndexHtml'),
     prepareConfig = require('../../util/build/prepareConfig'),
     prepareRevision = require('../../util/build/prepareRevision'),
-    prepareBuildHelper = require('../../util/build/prepareBuildHelper');
+    prepareBuildHelper = require('../../util/build/prepareBuildHelper'),
+    prepareTransform = require('../../util/build/prepareTransform');
 
 gulp.task('build:prod', 'Builds production build in build folder', ['build:dev'] , function (done) {
-    prepareBuildHelper.cleanProdBuild()
+    prepareBuildHelper
+        .cleanProdBuild()
+        // transform JSX
+        .then(prepareTransform)
+        // process app assets
         .then(prepareProdBuild.prepareJs)
         .then(prepareProdBuild.prepareCss)
         .then(prepareProdBuild.prepareAssets)

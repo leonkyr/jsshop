@@ -8,7 +8,6 @@ var gulp = require('gulp'),
     ngAnnotate = require('gulp-ng-annotate'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
-    templateCache = require('gulp-angular-templatecache'),
     replace = require('gulp-replace');
 
 function prepareAppAssets () {
@@ -49,22 +48,21 @@ function prepareAppCss () {
     return extend(deferred.promise, module.exports);
 }
 
-function prepareTemplateCache () {
-    var deferred = Q.defer();
-    gulp.src('app/**/*.tmpl.html')
-        .pipe(replace(/theme\/neuboard\/images\//g, 'images/'))
-        .pipe(templateCache('template.js', {
-            module: 'shopFrontend'
-        }))
-        .pipe(gulp.dest('build/dev/js')).on('finish', function () {
-            deferred.resolve(true);
-        });
-    return extend(deferred.promise, module.exports);
-}
+// function prepareTemplateCache () {
+//     var deferred = Q.defer();
+//     gulp.src('app/**/*.tmpl.html')
+//         .pipe(replace(/theme\/neuboard\/images\//g, 'images/'))
+//         .pipe(templateCache('template.js', {
+//             module: 'shopFrontend'
+//         }))
+//         .pipe(gulp.dest('build/dev/js')).on('finish', function () {
+//             deferred.resolve(true);
+//         });
+//     return extend(deferred.promise, module.exports);
+// }
 
 module.exports = {
     prepareAppAssets: prepareAppAssets,
     prepareAppJs: prepareAppJs,
-    prepareAppCss: prepareAppCss,
-    prepareTemplateCache: prepareTemplateCache
+    prepareAppCss: prepareAppCss
 };
