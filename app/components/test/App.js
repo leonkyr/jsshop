@@ -1,1 +1,0 @@
-React.render(<Parent />, document.getElementById('mount-point'));

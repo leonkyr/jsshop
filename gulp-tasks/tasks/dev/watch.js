@@ -29,7 +29,7 @@ var path = {
   DEST: './build',
   DEST_BUILD: './build/dev',
   DEST_SRC: './build/dev/src',
-  ENTRY_POINT: './app/components/test/App.js'
+  ENTRY_POINT: './app/App.js'
 };
 
 gulp.task('copy', function(){
@@ -73,10 +73,10 @@ gulp.task('zbuild', function(){
 gulp.task('zreplaceHTML', function(){
   gulp.src(path.HTML)
     .pipe(inject(
-                    gulp.src(['./build/dev/**/*.js'], {
+                    gulp.src(['src/build.js'], {
                         read: false
                     }), {
-                        relative: true,
+                        relative: false,
                         name: 'app'
                     }
                 ))
