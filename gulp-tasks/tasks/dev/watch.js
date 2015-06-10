@@ -52,7 +52,7 @@ gulp.task('watch', 'WATCH', ['copy', 'zbuild', 'zreplaceHTML'], function() {
       .pipe(source(path.OUT))
       .pipe(gulp.dest(path.DEST_SRC))
       console.log('Updated');
-  })
+    })
     .bundle()
     .pipe(source(path.OUT))
     .pipe(gulp.dest(path.DEST_SRC));

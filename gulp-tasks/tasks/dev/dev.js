@@ -14,7 +14,7 @@ var gulp = require('gulp-help')(require('gulp')),
     prepareConfig = require('../../util/build/prepareConfig'),
     prepareRevision = require('../../util/build/prepareRevision');
 
-gulp.task('dev', 'Start a fully functioning dev environment with livereload', ['build:dev'], function (done) {
+gulp.task('dev', 'Start a fully functioning dev environment with watch', ['build:dev'], function (done) {
     prepareDevServer
         .startAssetServer()
         .then(function () {

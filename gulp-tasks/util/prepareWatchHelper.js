@@ -2,20 +2,39 @@
 
 var Q = require('q'),
     extend = require('node.extend'),
-    watch = require('gulp-watch');
+    watch = require('gulp-watch'),
+    browserify = require('browserify'),
+    watchify = require('watchify');
 
-function watchAppJs () {
+function watchAppJsx () {
     var deferred = Q.defer();
-    var watcher = watch([
-        'app/**/*.js'
-    ], function (vinyl) {
-        extend(vinyl, watcher);
-        deferred.notify(vinyl);
-    });
+    var watcher  = watchify(browserify({
+        entries: ['app/**/*.js', 'app/**/*.jsx'],
+        transform: [reactify],
+        debug: true,
+        cache: {},
+        packageCache: {},
+        fullPaths: true
+    }));
+
+    return watcher.on('update', function () {
+            watcher
+                .bundle()
+                .pipe(source('index.js'))
+                .pipe(gulp.dest('./build/dev/src'));
+            console.log('Updated');
+        })
+        .bundle()
+        .pipe(source('index.js'))
+        .pipe(gulp.dest('./build/dev/src'));
+        .on('finish', function () {
+            deferred.resolve(true);
+        });
+    
     return extend(deferred.promise, module.exports);
 }
 
-function watchAllFiles () {
+function watchAllButJsxFiles () {
     var deferred = Q.defer();
     var watcher = watch([
         'bower_components/**/*.js',
