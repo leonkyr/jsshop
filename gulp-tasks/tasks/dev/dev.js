@@ -15,17 +15,19 @@ var gulp = require('gulp-help')(require('gulp')),
     prepareRevision = require('../../util/build/prepareRevision');
 
 gulp.task('dev', 'Start a fully functioning dev environment with watch', ['build:dev'], function (done) {
-    prepareDevServer
-        .startAssetServer()
-        .then(function () {
-            openPage('http://localhost:8000/build/dev/index.html');
-            done();
-        });
+    // prepareDevServer
+    //     .startAssetServer()
+    //     .then(function () {
+    //         openPage('http://localhost:8000/build/dev/index.html');
+    //         done();
+    //     });
 
     prepareWatchHelper
-        .watchAllFiles()
+        .watchAppJsx()
+        .then(prepareWatchHelper.watchAllButJsxFiles)
         .then(function () {}, function () {}, function (vinyl) {
-            prepareBuildHelper.cleanBuild()
+            prepareBuildHelper
+                .cleanBuild()
                 // process vendor assets
                 .then(prepareVendorAssets.prepareVendorJs)
                 .then(prepareVendorAssets.prepareVendorCss)
@@ -33,10 +35,10 @@ gulp.task('dev', 'Start a fully functioning dev environment with watch', ['build
                 // transform JSX
                 .then(prepareTransform.transformJsx)
                 // process app assets
-                .then(prepareAppAssets.prepareAppJs)
-                .then(prepareAppAssets.prepareAppCss)
-                // .then(prepareAppAssets.prepareTemplateCache)
-                .then(prepareAppAssets.prepareAppAssets)
+                //.then(prepareAppAssets.prepareAppJs)
+                //.then(prepareAppAssets.prepareAppCss)
+                //.then(prepareAppAssets.prepareTemplateCache)
+                //.then(prepareAppAssets.prepareAppAssets)
                 // prepare index html
                 .then(prepareIndexHtml.prepareDevIndexHtml)
                 // prepare config json
@@ -49,9 +51,9 @@ gulp.task('dev', 'Start a fully functioning dev environment with watch', ['build
                 });
         });
 
-    prepareWatchHelper
-        .watchAppJs()
-        .then(function () {},function () {}, function () {
-            gulp.run('test:unit');
-        });
+    // prepareWatchHelper
+    //     .watchAppJs()
+    //     .then(function () {},function () {}, function () {
+    //         gulp.run('test:unit');
+    //     });
 });

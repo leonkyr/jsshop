@@ -1,32 +1,36 @@
 'use strict';
 
 var Q = require('q'),
+    gulp = require('gulp-help')(require('gulp')),
     extend = require('node.extend'),
     watch = require('gulp-watch'),
+    source = require('vinyl-source-stream'),
     browserify = require('browserify'),
+    reactify = require('reactify'),
     watchify = require('watchify');
 
 function watchAppJsx () {
-    var deferred = Q.defer();
+    
     var watcher  = watchify(browserify({
-        entries: ['app/**/*.js', 'app/**/*.jsx'],
+        entries: ['app/App.jsx'],
         transform: [reactify],
         debug: true,
         cache: {},
         packageCache: {},
         fullPaths: true
     }));
+    var deferred = Q.defer();
 
-    return watcher.on('update', function () {
+    watcher.on('update', function () {
             watcher
                 .bundle()
-                .pipe(source('index.js'))
+                .pipe(source('app.js'))
                 .pipe(gulp.dest('./build/dev/src'));
             console.log('Updated');
         })
         .bundle()
-        .pipe(source('index.js'))
-        .pipe(gulp.dest('./build/dev/src'));
+        .pipe(source('app.js'))
+        .pipe(gulp.dest('./build/dev/src'))
         .on('finish', function () {
             deferred.resolve(true);
         });
@@ -39,12 +43,9 @@ function watchAllButJsxFiles () {
     var watcher = watch([
         'bower_components/**/*.js',
         'bower_components/**/*.css',
-        'app/**/*.js',
-        'app/config.json',
+        'app/**/*.*',
         '!app/**/*spec.js',
-        'app/**/*.css',
-        'app/**/*.html',
-        '!app/**/index.html'
+        '!app/**/*.jsx'
     ], function (vinyl) {
         extend(vinyl, watcher);
         deferred.notify(vinyl);
@@ -53,6 +54,6 @@ function watchAllButJsxFiles () {
 }
 
 module.exports = {
-    watchAppJs: watchAppJs,
-    watchAllFiles: watchAllFiles
+    watchAppJsx: watchAppJsx,
+    watchAllButJsxFiles: watchAllButJsxFiles
 };

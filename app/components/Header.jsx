@@ -1,7 +1,7 @@
 var React = require("react");
 var Router = require("react-router");
-var Navigation = require("./Navigation.js");
-var Breadcrumbs = require("./Breadcrumbs.js");
+var Navigation = require("./Navigation.jsx");
+var Breadcrumbs = require("./Breadcrumbs.jsx");
 var Link = Router.Link;
 
 var Header = React.createClass({

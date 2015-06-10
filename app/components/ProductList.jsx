@@ -1,5 +1,5 @@
 var React = require('react');
-var Product = require('./Product');
+var Product = require('./Product.jsx');
 var testStore = require('../stores/testStore');
 var testActions = require('../actions/testActions');
 
