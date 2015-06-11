@@ -33,7 +33,7 @@ gulp.task('dev', 'Start a fully functioning dev environment with watch', ['build
                 .then(prepareVendorAssets.prepareVendorCss)
                 .then(prepareVendorAssets.prepareVendorAssets)
                 // transform JSX
-                .then(prepareTransform.transformJsx)
+                //.then(prepareTransform.transformJsx)
                 // process app assets
                 //.then(prepareAppAssets.prepareAppJs)
                 //.then(prepareAppAssets.prepareAppCss)

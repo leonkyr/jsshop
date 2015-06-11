@@ -11,6 +11,7 @@ var Q = require('q'),
     sourcemaps = require('gulp-sourcemaps');
 
 function revisionDevBuild () {
+    console.log('revisionDevBuild');
     var deferred = Q.defer();
     var originalFiles = vinylPaths();
     gulp.src(['build/dev/**/*.*', '!build/dev/index.html', '!build/dev/**/*.map'])

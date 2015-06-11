@@ -9,18 +9,19 @@ var gulp = require('gulp'),
     htmlmin = require('gulp-htmlmin');
 
 function prepareDevIndexHtml () {
+    console.log('Preparing Dev Index.html');
     var deferred = Q.defer();
     gulp.src('./app/index.html')
         .pipe(gulp.dest('./build/dev')).on('finish', function () {
             gulp.src('./build/dev/index.html')
-                .pipe(inject(gulp.src(['./build/dev/js/vendor.js', './build/dev/css/vendor.css'], {
-                    read: false
-                }), {
-                    relative: true,
-                    name: 'bower'
-                }))
+                // .pipe(inject(gulp.src(['./build/dev/js/vendor.js', './build/dev/css/vendor.css'], {
+                //     read: false
+                // }), {
+                //     relative: true,
+                //     name: 'bower'
+                // }))
                 .pipe(inject(
-                    gulp.src(['./build/dev/js/app.js', './build/dev/js/template.js', './build/dev/css/app.css'], {
+                    gulp.src(['./build/dev/js/app.js'], {
                         read: false
                     }), {
                         relative: true,

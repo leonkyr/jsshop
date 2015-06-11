@@ -10,7 +10,7 @@ var Q = require('q'),
     watchify = require('watchify');
 
 function watchAppJsx () {
-    
+    console.log('watchAppJsx');
     var watcher  = watchify(browserify({
         entries: ['app/App.jsx'],
         transform: [reactify],
@@ -39,6 +39,7 @@ function watchAppJsx () {
 }
 
 function watchAllButJsxFiles () {
+    console.log('watchAllButJsxFiles');
     var deferred = Q.defer();
     var watcher = watch([
         'bower_components/**/*.js',
@@ -46,9 +47,11 @@ function watchAllButJsxFiles () {
         'app/**/*.*',
         '!app/**/*spec.js',
         '!app/**/*.jsx'
-    ], function (vinyl) {
+    ], function () {
+        console.log('inside watchAllButJsxFiles');
         extend(vinyl, watcher);
-        deferred.notify(vinyl);
+        console.log('inside watchAllButJsxFiles');
+        deferred.resolve(true);
     });
     return extend(deferred.promise, module.exports);
 }

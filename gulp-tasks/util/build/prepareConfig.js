@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     extend = require('node.extend');
 
 function prepareDevConfig () {
+    console.log('prepareDevConfig');
     var deferred = Q.defer();
     gulp.src(['./app/config.json'])
         .pipe(gulp.dest('build/dev')).on('finish', function () {

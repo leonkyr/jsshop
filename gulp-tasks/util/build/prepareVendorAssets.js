@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     addsrc = require('gulp-add-src');
 
 function prepareVendorJs () {
+    console.log('prepareVendorJs');
     var deferred = Q.defer();
     gulp.src(bowerFiles())
         .pipe(addsrc.append('./bower_components/navgoco/src/jquery.navgoco.js'))
@@ -28,6 +29,7 @@ function prepareVendorJs () {
 }
 
 function prepareVendorAssets () {
+    console.log('prepareVendorAssets');
     var deferred = Q.defer();
     gulp.src(bowerFiles())
         .pipe(gulpFilter(['**/*.eot', '**/*.svg', '**/*.ttf', '**/*.woff', '**/*.woff2', '**/*.otf']))
@@ -38,6 +40,7 @@ function prepareVendorAssets () {
 }
 
 function prepareVendorCss () {
+    console.log('prepareVendorCss');
     var deferred = Q.defer();
     gulp.src(bowerFiles())
         .pipe(addsrc.append('./custom_modules/qtip2/jquery.qtip.css'))
@@ -53,6 +56,7 @@ function prepareVendorCss () {
 }
 
 function compressVendorJs () {
+    console.log('compressVendorJs');
     var deferred = Q.defer();
     gulp.src(['build/dev/js/vendor.js'])
         .pipe(uglify())

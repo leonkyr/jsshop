@@ -11,6 +11,7 @@ var gulp = require('gulp'),
     git = require('gulp-git');
 
 function cleanBuild () {
+    console.log('cleanBuild');
     var deferred = Q.defer();
     del(['build'], function () {
         deferred.resolve(true);
@@ -19,6 +20,7 @@ function cleanBuild () {
 }
 
 function cleanDevBuild () {
+    console.log('cleanBuild');
     var deferred = Q.defer();
     del(['build/dev'], function () {
         deferred.resolve(true);
@@ -35,6 +37,7 @@ function cleanProdBuild () {
 }
 
 function addGitRepoInfoDev () {
+    console.log('addGitRepoInfoDev');
     var deferred = Q.defer();
     git.revParse({args: '--abbrev-ref HEAD',quiet: true}, function (err, branch) {
         git.revParse({args: 'HEAD',quiet: true}, function (err, hash) {
@@ -58,6 +61,7 @@ function addGitRepoInfoDev () {
 }
 
 function addGitRepoInfoProd () {
+    console.log('addGitRepoInfoProd');
     var deferred = Q.defer();
     git.revParse({args: '--abbrev-ref HEAD',quiet: true}, function (err, branch) {
         git.revParse({args: 'HEAD',quiet: true}, function (err, hash) {

@@ -7,12 +7,13 @@ var gulp = require('gulp'),
     concat = require('gulp-concat');
 
 function transformJsx () {
+    console.log('transformJsx');
     var deferred = Q.defer();
     
-    gulp.src(['components/**/*.js'])
+    gulp.src(['components/**/*.jsx'])
         .pipe(react())
-        .pipe(concat('script.min.js'))
-        .pipe(gulp.dest('build/dev/js'))
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest('build/dev/src'))
         .on('finish', function () {
             deferred.resolve(true);
         });
