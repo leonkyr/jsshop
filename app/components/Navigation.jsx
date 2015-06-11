@@ -2,7 +2,6 @@ var React = require("react");
 var Router = require("react-router");
 var classSet = require('react/lib/cx');
 var State = Router.State;
-var Link = Router.Link;
 
 var NavigationLink = React.createClass({
   propTypes: {
@@ -26,10 +25,13 @@ var NavigationLink = React.createClass({
 
     return classSet(classNames);
   },
+  isActive: function(to, params, query){
+    // TODO: Fix
+    return true;
+  },
   render: function() {
     return (
       <li className={this.getClassName()}>
-        <Link to={this.props.to} activeClassName={this.props.activeClassName}>{this.props.title}</Link>
       </li>
     );
   }

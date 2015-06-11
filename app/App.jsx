@@ -11,12 +11,12 @@ var App = React.createClass({
   render: function(){
     return (
       <div className="container">
-        <Header/>
+        // <Header/>
           <div className="main">
             <ProductList />
-            <RouteHandler />
+            // <RouteHandler />
           </div>
-        <Footer/>
+        // <Footer/>
       </div>
     )
   }
