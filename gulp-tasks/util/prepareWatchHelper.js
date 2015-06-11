@@ -48,9 +48,6 @@ function watchAllButJsxFiles () {
         '!app/**/*spec.js',
         '!app/**/*.jsx'
     ], function () {
-        console.log('inside watchAllButJsxFiles');
-        extend(vinyl, watcher);
-        console.log('inside watchAllButJsxFiles');
         deferred.resolve(true);
     });
     return extend(deferred.promise, module.exports);

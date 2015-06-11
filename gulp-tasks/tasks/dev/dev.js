@@ -15,23 +15,13 @@ var gulp = require('gulp-help')(require('gulp')),
     prepareRevision = require('../../util/build/prepareRevision');
 
 gulp.task('dev', 'Start a fully functioning dev environment with watch', ['build:dev'], function (done) {
-    // prepareDevServer
-    //     .startAssetServer()
-    //     .then(function () {
-    //         openPage('http://localhost:8000/build/dev/index.html');
-    //         done();
-    //     });
-
-    prepareWatchHelper
-        .watchAppJsx()
-        .then(prepareWatchHelper.watchAllButJsxFiles)
-        .then(function () {}, function () {}, function (vinyl) {
-            prepareBuildHelper
-                .cleanBuild()
-                // process vendor assets
-                .then(prepareVendorAssets.prepareVendorJs)
-                .then(prepareVendorAssets.prepareVendorCss)
-                .then(prepareVendorAssets.prepareVendorAssets)
+    prepareBuildHelper.cleanBuild()
+        //.then(prepareWatchHelper.watchAllButJsxFiles)
+        .then(prepareWatchHelper.watchAppJsx)
+        // process vendor assets
+        //.then(prepareVendorAssets.prepareVendorJs)
+        //.then(prepareVendorAssets.prepareVendorCss)
+        //.then(prepareVendorAssets.prepareVendorAssets)
                 // transform JSX
                 //.then(prepareTransform.transformJsx)
                 // process app assets
@@ -40,15 +30,23 @@ gulp.task('dev', 'Start a fully functioning dev environment with watch', ['build
                 //.then(prepareAppAssets.prepareTemplateCache)
                 //.then(prepareAppAssets.prepareAppAssets)
                 // prepare index html
-                .then(prepareIndexHtml.prepareDevIndexHtml)
+        .then(prepareIndexHtml.prepareDevIndexHtml)
                 // prepare config json
-                .then(prepareConfig.prepareDevConfig)
-                .then(prepareRevision.revisionDevBuild)
-                .then(prepareBuildHelper.addGitRepoInfoDev)
-                .then(function () {
-                    gulp.src('build/dev/index.html')
-                        .pipe(server.reload());
-                });
+        .then(prepareConfig.prepareDevConfig)
+        .then(prepareRevision.revisionDevBuild)
+        .then(prepareBuildHelper.addGitRepoInfoDev)
+        .then(function () {
+            gulp.src('build/dev/index.html')
+                .pipe(server.reload());
+            //done();
+        });
+
+
+    prepareDevServer
+        .startAssetServer()
+        .then(function () {
+             openPage('http://localhost:8000/build/dev/index.html');
+             done();
         });
 
     // prepareWatchHelper

@@ -15,8 +15,8 @@ function prepareVendorJs () {
     console.log('prepareVendorJs');
     var deferred = Q.defer();
     gulp.src(bowerFiles())
-        .pipe(addsrc.append('./bower_components/navgoco/src/jquery.navgoco.js'))
-        .pipe(addsrc.append('./custom_modules/qtip2/jquery.qtip.js'))
+        //.pipe(addsrc.append('./bower_components/navgoco/src/jquery.navgoco.js'))
+        //.pipe(addsrc.append('./custom_modules/qtip2/jquery.qtip.js'))
         .pipe(gulpFilter(['**/*.js']))
         .pipe(sourcemaps.init())
         .pipe(concat('vendor.js'))

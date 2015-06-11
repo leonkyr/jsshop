@@ -12,7 +12,7 @@ gulp.task('build:prod', 'Builds production build in build folder', ['build:dev']
     prepareBuildHelper
         .cleanProdBuild()
         // transform JSX
-        .then(prepareTransform)
+        .then(prepareTransform.transformJsx)
         // process app assets
         .then(prepareProdBuild.prepareJs)
         .then(prepareProdBuild.prepareCss)

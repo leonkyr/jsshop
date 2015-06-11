@@ -21,7 +21,7 @@ function prepareDevIndexHtml () {
                 //     name: 'bower'
                 // }))
                 .pipe(inject(
-                    gulp.src(['./build/dev/js/app.js'], {
+                    gulp.src(['./build/dev/src/app.js'], {
                         read: false
                     }), {
                         relative: true,
