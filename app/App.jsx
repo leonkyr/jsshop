@@ -1,7 +1,7 @@
 var React = require('react');
 var ProductList = require('./components/ProductList.jsx');
-var Router = require("react-router");
-var RouteHandler = Router.RouteHandler;
+// var Router = require("react-router");
+// var RouteHandler = Router.RouteHandler;
 
 // Components
 var Header = require("./components/Header.jsx");
